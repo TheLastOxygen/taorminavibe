@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import Link from 'next/link';
 import HeroSection from '@/components/sections/HeroSection';
 import FeaturedPlaces from '@/components/sections/FeaturedPlaces';
 import VibePointBanner from '@/components/ui/VibePointBanner';
@@ -88,6 +89,17 @@ export default async function LandingPage({
           <h3 className="sunset-text text-xl font-display font-bold mb-2">
             Taormina Vibe
           </h3>
+          <div className="flex justify-center gap-6 mb-6">
+            <Link href={`/${lang}/about`} className="text-white/40 hover:text-white transition-colors text-xs font-medium uppercase tracking-wider">
+              Il Team
+            </Link>
+            <a href="#how-it-works" className="text-white/40 hover:text-white transition-colors text-xs font-medium uppercase tracking-wider">
+              Come Funziona
+            </a>
+            <a href={`/${lang}/events`} className="text-white/40 hover:text-white transition-colors text-xs font-medium uppercase tracking-wider">
+              Eventi
+            </a>
+          </div>
           <p className="text-white/25 text-xs font-sans mb-6">
             La guida digitale che vibra con te
           </p>
