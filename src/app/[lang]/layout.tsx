@@ -1,54 +1,65 @@
-import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Playfair_Display, Montserrat } from "next/font/google";
 import "../globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
+  display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#0B1D3A",
+};
 
 export const metadata: Metadata = {
   title: {
-    default: "Taormina Vibe | The Gold Guide to Taormina",
+    default: "Taormina Vibe | Senti il Ritmo di Taormina",
     template: "%s | Taormina Vibe",
   },
-  description: "Experience the ultimate luxury guide to Taormina. Discover exclusive dining, hidden gems, and premium local activities.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
+  description:
+    "La guida digitale premium di Taormina. Scopri ristoranti, locali, spiagge nascoste e eventi esclusivi tramite QR code.",
   manifest: "/manifest.json",
-  themeColor: "#000000",
   appleWebApp: {
     capable: true,
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
     title: "Taormina Vibe",
-    // startUpImage: [],
   },
   formatDetection: {
     telephone: false,
   },
+  openGraph: {
+    title: "Taormina Vibe",
+    description: "Senti il ritmo di Taormina. La guida premium per vivere l'essenza della Sicilia.",
+    siteName: "Taormina Vibe",
+    type: "website",
+  },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = await params;
+
   return (
     <html
-      lang={params.lang}
-      className={`${inter.variable} ${outfit.variable} h-full antialiased dark`}
+      lang={lang}
+      className={`${montserrat.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="bg-black text-white font-sans min-h-full">
+      <body className="bg-sea-deep text-ceramic-white font-sans min-h-full overflow-x-hidden">
         {children}
       </body>
     </html>

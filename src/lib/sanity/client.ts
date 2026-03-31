@@ -24,10 +24,13 @@ export const getPlaceBySlug = async (slug: string, lang: string) => {
   // Simulate fetching with ISR revalidation timing
   const data = await client.fetch('*[_type == "place" && slug.current == $slug][0]', { slug });
   if (!data) return null;
-  
+
+  type LangKey = keyof typeof data.title;
+  const key = (lang in data.title ? lang : 'en') as LangKey;
+
   return {
     ...data,
-    title: data.title[lang] || data.title['en'],
-    description: data.description[lang] || data.description['en'],
+    title: data.title[key],
+    description: data.description[key],
   };
 };

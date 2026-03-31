@@ -14,49 +14,57 @@ export async function generateStaticParams() {
   ];
 }
 
-export async function generateMetadata({ params }: { params: { lang: string; slug: string } }): Promise<Metadata> {
-  const { lang, slug } = params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string; slug: string }>;
+}): Promise<Metadata> {
+  const { lang, slug } = await params;
   const place = await getPlaceBySlug(slug, lang);
-  
+
   if (!place) return { title: 'Not Found' };
-  
+
   return {
     title: place.title,
     description: place.description.substring(0, 160),
   };
 }
 
-export default async function GuidePage({ params }: { params: { lang: string; slug: string } }) {
-  const { lang, slug } = params;
+export default async function GuidePage({
+  params,
+}: {
+  params: Promise<{ lang: string; slug: string }>;
+}) {
+  const { lang, slug } = await params;
   const place = await getPlaceBySlug(slug, lang);
 
   if (!place) notFound();
 
   return (
     <main className="min-h-screen px-6 py-20 flex flex-col items-center">
-      <div className="w-full max-w-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl">
-        <span className="text-gold uppercase tracking-tighter text-sm font-bold mb-2 block">
+      <div className="w-full max-w-2xl glass-card p-8">
+        <span className="text-sunset-orange uppercase tracking-widest text-xs font-bold mb-2 block">
           {place.category}
         </span>
-        <h1 className="text-4xl font-display font-medium gold-gradient bg-clip-text text-transparent mb-6">
+        <h1 className="text-4xl font-display font-bold sunset-text mb-6">
           {place.title}
         </h1>
-        <p className="text-white/70 leading-relaxed mb-8">
+        <p className="text-white/70 leading-relaxed mb-8 font-sans">
           {place.description}
         </p>
-        
+
         {place.isPremium && (
-          <div className="p-4 bg-gold/10 border border-gold/20 rounded-xl text-gold text-sm mb-8 italic">
-            Exclusive Premium Partner Showcase
+          <div className="p-4 bg-sunset-orange/10 border border-sunset-orange/20 rounded-xl text-sunset-orange text-sm mb-8 italic font-sans">
+            ⭐ Exclusive Premium Partner
           </div>
         )}
-        
+
         <div className="flex gap-4">
           <a
             href={place.affiliateLinks.bookingUrl}
-            className="flex-1 py-4 bg-gold text-black text-center font-bold rounded-2xl hover:bg-gold-muted transition-colors"
+            className="flex-1 py-4 sunset-gradient text-white text-center font-sans font-bold rounded-2xl hover:opacity-90 transition-opacity"
           >
-            Visit Website
+            Visita il Sito
           </a>
         </div>
       </div>
