@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Montserrat } from "next/font/google";
+import { Outfit, Inter } from "next/font/google";
 import "../globals.css";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
 });
@@ -57,7 +57,7 @@ export default async function RootLayout({
   return (
     <html
       lang={lang}
-      className={`${montserrat.variable} ${playfair.variable} h-full antialiased`}
+      className={`${inter.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="bg-sea-deep text-ceramic-white font-sans min-h-full overflow-x-hidden">
         {children}

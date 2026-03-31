@@ -53,7 +53,27 @@ export default function HeroSection() {
         >
           <span className="text-ceramic-white">Senti il</span>
           <br />
-          <span className="sunset-text">ritmo di</span>
+          <span className="inline-block">
+            <motion.span
+              animate={{
+                scale: [1, 1.04, 1],
+                textShadow: [
+                  '0 0 0px rgba(242, 107, 58, 0), 0 0 0px rgba(245, 166, 35, 0)',
+                  '0 0 24px rgba(242, 107, 58, 0.6), 0 0 48px rgba(245, 166, 35, 0.3)',
+                  '0 0 0px rgba(242, 107, 58, 0), 0 0 0px rgba(245, 166, 35, 0)',
+                ],
+              }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                ease: [0.37, 0, 0.63, 1],
+              }}
+              className="inline-block sunset-text"
+            >
+              ritmo
+            </motion.span>
+            <span className="sunset-text">{' '}di</span>
+          </span>
           <br />
           <span className="text-ceramic-white">Taormina</span>
         </motion.h1>

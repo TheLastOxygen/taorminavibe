@@ -63,7 +63,7 @@ export const partners: Record<string, PartnerConfig> = {
   '5': {
     placeId: '5',
     platform: 'direct',
-    affiliateUrl: 'https://www.morganabar.it/reservations?ref=taorminavibe',
+    affiliateUrl: 'https://www.sevenrooms.com/explore/morganabar/reservations/create/search',
     ctaLabel: 'Prenota il Tavolo',
     ctaEmoji: '🍸',
     commission: '7%',

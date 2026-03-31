@@ -27,8 +27,8 @@
   --color-gold: #D4AF37;
 
   /* Fonts */
-  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 
   /* Shadows */
   --shadow-premium: 0 8px 32px rgba(11, 29, 58, 0.4);
