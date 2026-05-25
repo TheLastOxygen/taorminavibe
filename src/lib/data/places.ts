@@ -197,6 +197,46 @@ export const places: Place[] = [
     coordinates: { lat: 37.8518, lng: 15.2867 },
     googlePlaceId: 'ChIJu2rWTEUMFxMRCyIVSqU2eyQ',
   },
+  {
+    id: '9',
+    slug: 'villa-zuccaro',
+    title: 'Villa Zuccaro',
+    subtitle: 'Pizzeria d\'eccellenza',
+    description:
+      'Celebre pizzeria situata in una location storica con un meraviglioso giardino interno.',
+    vibeCheck:
+      'L\'odore della legna e della pizza appena sfornata si mescola all\'aria della sera. Nel giardino di Villa Zuccaro, tra alberi secolari e luci soffuse, l\'atmosfera è magica. 🍕🌿',
+    category: 'eat',
+    emoji: '🍕',
+    imageUrl: '/images/places/villa-zuccaro.jpg',
+    images: ['/images/places/villa-zuccaro.jpg'],
+    rating: 4.5,
+    priceLevel: '€€',
+    tags: ['Pizza', 'Cena', 'Giardino'],
+    isPremium: false,
+    coordinates: { lat: 37.8515, lng: 15.2870 },
+    googlePlaceId: 'ChIJpUE8XaQRFBMRWI0o-QUOWaM',
+  },
+  {
+    id: '10',
+    slug: 'osteria-villa-zuccaro',
+    title: 'Osteria Villa Zuccaro',
+    subtitle: 'Autentica cucina siciliana',
+    description:
+      'Piatti della tradizione locale serviti in un ambiente caldo e accogliente nel cuore di Taormina.',
+    vibeCheck:
+      'Un\'immersione nei sapori più veri della Sicilia. Tra un calice di vino locale e un piatto di pasta fresca, l\'Osteria regala un\'esperienza autentica e conviviale. 🍝🍷',
+    category: 'eat',
+    emoji: '🍝',
+    imageUrl: '/images/places/osteria-villa-zuccaro.jpg',
+    images: ['/images/places/osteria-villa-zuccaro.jpg'],
+    rating: 4.6,
+    priceLevel: '€€',
+    tags: ['Tradizione', 'Pasta', 'Vino'],
+    isPremium: false,
+    coordinates: { lat: 37.8516, lng: 15.2872 },
+    googlePlaceId: 'ChIJkZpImOgRFBMRYC2ktQfRH6Q',
+  },
 ];
 
 export function getPlacesByCategory(category: PlaceCategory): Place[] {

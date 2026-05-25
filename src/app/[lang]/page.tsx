@@ -4,6 +4,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import FeaturedPlaces from '@/components/sections/FeaturedPlaces';
 import VibePointBanner from '@/components/ui/VibePointBanner';
 import { Calendar, QrCode, Compass, Zap } from 'lucide-react';
+import { getDictionary } from '@/lib/dictionaries';
 
 export default async function LandingPage({
   params,
@@ -11,6 +12,7 @@ export default async function LandingPage({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
+  const dict = getDictionary(lang).home;
 
   return (
     <main className="relative flex flex-col items-center overflow-hidden">
@@ -26,10 +28,10 @@ export default async function LandingPage({
       <section id="how-it-works" className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
         <div className="text-center mb-14">
           <span className="text-sunset-orange font-sans text-xs font-bold tracking-[0.2em] uppercase mb-3 block">
-            Come Funziona
+            {dict.howItWorksBadge}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-ceramic-white mb-4">
-            Tre passi per vivere Taormina
+            {dict.howItWorksTitle}
           </h2>
         </div>
 
@@ -37,20 +39,20 @@ export default async function LandingPage({
           <StepCard
             step={1}
             icon={<QrCode className="w-6 h-6 text-sunset-orange" />}
-            title="Scansiona"
-            description="Trova gli sticker con il QR code nei punti panoramici, ristoranti e locali di Taormina."
+            title={dict.step1Title}
+            description={dict.step1Desc}
           />
           <StepCard
             step={2}
             icon={<Compass className="w-6 h-6 text-sunset-gold" />}
-            title="Scopri"
-            description="Ottieni consigli personalizzati, colonne sonore e i locali più vicini al tuo punto."
+            title={dict.step2Title}
+            description={dict.step2Desc}
           />
           <StepCard
             step={3}
             icon={<Zap className="w-6 h-6 text-sunset-rose" />}
-            title="Vivi"
-            description="Vivi Taormina come un locale. Offerte esclusive e esperienze uniche solo per te."
+            title={dict.step3Title}
+            description={dict.step3Desc}
           />
         </div>
       </section>
@@ -67,16 +69,16 @@ export default async function LandingPage({
           <div className="relative z-10">
             <Calendar className="w-8 h-8 text-sunset-orange mx-auto mb-4" />
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-ceramic-white mb-3">
-              Eventi di Oggi
+              {dict.eventsTitle}
             </h2>
             <p className="text-white/40 font-sans max-w-md mx-auto text-sm mb-8">
-              Concerti al Teatro Greco, DJ set al tramonto, mercati locali. Aggiornamento automatico ogni 12 ore.
+              {dict.eventsDesc}
             </p>
             <a
               href={`/${lang}/events`}
               className="inline-flex items-center gap-2 px-8 py-4 sunset-gradient text-white font-sans font-bold rounded-full shadow-lg text-sm tracking-wide hover:shadow-xl transition-shadow"
             >
-              Scopri gli Eventi
+              {dict.eventsCta}
               <span className="text-base">→</span>
             </a>
           </div>
@@ -91,20 +93,20 @@ export default async function LandingPage({
           </h3>
           <div className="flex justify-center gap-6 mb-6">
             <Link href={`/${lang}/about`} className="text-white/40 hover:text-white transition-colors text-xs font-medium uppercase tracking-wider">
-              Il Team
+              {dict.footerTeam}
             </Link>
             <a href="#how-it-works" className="text-white/40 hover:text-white transition-colors text-xs font-medium uppercase tracking-wider">
-              Come Funziona
+              {dict.footerHowItWorks}
             </a>
             <a href={`/${lang}/events`} className="text-white/40 hover:text-white transition-colors text-xs font-medium uppercase tracking-wider">
-              Eventi
+              {dict.footerEvents}
             </a>
           </div>
           <p className="text-white/25 text-xs font-sans mb-6">
-            La guida digitale che vibra con te
+            {dict.footerDesc}
           </p>
           <p className="text-white/20 text-xs font-sans">
-            &copy; {new Date().getFullYear()} Taormina Vibe. Tutti i diritti riservati.
+            &copy; {new Date().getFullYear()} Taormina Vibe. {dict.footerRights}
           </p>
         </div>
       </footer>

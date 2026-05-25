@@ -2,8 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import { getDictionary } from '@/lib/dictionaries';
 
 export default function HeroSection() {
+  const params = useParams();
+  const lang = (params.lang as string) || 'it';
+  const dict = getDictionary(lang).hero;
+
   return (
     <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
       {/* Animated background layers */}
@@ -40,7 +46,7 @@ export default function HeroSection() {
         >
           <MapPin className="w-3.5 h-3.5 text-sunset-orange" />
           <span className="text-xs font-sans font-medium tracking-widest uppercase text-white/60">
-            Sicilia, Italia
+            {dict.badge}
           </span>
         </motion.div>
 
@@ -51,7 +57,7 @@ export default function HeroSection() {
           transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.95] mb-6"
         >
-          <span className="text-ceramic-white">Senti il</span>
+          <span className="text-ceramic-white">{dict.title1}</span>
           <br />
           <span className="inline-block">
             <motion.span
@@ -70,12 +76,12 @@ export default function HeroSection() {
               }}
               className="inline-block sunset-text"
             >
-              ritmo
+              {dict.title2}
             </motion.span>
-            <span className="sunset-text">{' '}di</span>
+            <span className="sunset-text">{' '}{dict.title3}</span>
           </span>
           <br />
-          <span className="text-ceramic-white">Taormina</span>
+          <span className="text-ceramic-white">{dict.title4}</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -85,9 +91,9 @@ export default function HeroSection() {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="text-white/50 text-base sm:text-lg max-w-md mx-auto mb-10 leading-relaxed font-sans"
         >
-          Scansiona. Scopri. Vivi.
+          {dict.subtitle1}
           <br />
-          La guida digitale che vibra con te.
+          {dict.subtitle2}
         </motion.p>
 
         {/* CTA */}
@@ -103,7 +109,7 @@ export default function HeroSection() {
             whileTap={{ scale: 0.97 }}
             className="px-8 py-4 sunset-gradient text-white font-sans font-bold rounded-full shadow-lg text-sm tracking-wide"
           >
-            Esplora la Guida
+            {dict.cta1}
           </motion.a>
           <motion.a
             href="#how-it-works"
@@ -111,7 +117,7 @@ export default function HeroSection() {
             whileTap={{ scale: 0.97 }}
             className="px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/15 text-white/80 font-sans font-semibold rounded-full text-sm tracking-wide hover:bg-white/10 transition-colors"
           >
-            Come Funziona
+            {dict.cta2}
           </motion.a>
         </motion.div>
       </motion.div>
@@ -123,7 +129,7 @@ export default function HeroSection() {
         transition={{ delay: 1.5 }}
         className="absolute bottom-8 flex flex-col items-center gap-2"
       >
-        <span className="text-white/30 text-xs font-sans tracking-widest uppercase">Scorri</span>
+        <span className="text-white/30 text-xs font-sans tracking-widest uppercase">{dict.scroll}</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}

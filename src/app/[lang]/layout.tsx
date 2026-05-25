@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "../globals.css";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -60,6 +61,7 @@ export default async function RootLayout({
       className={`${inter.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="bg-sea-deep text-ceramic-white font-sans min-h-full overflow-x-hidden">
+        <LanguageSwitcher />
         {children}
       </body>
     </html>

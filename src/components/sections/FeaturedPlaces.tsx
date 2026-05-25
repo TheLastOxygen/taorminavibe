@@ -2,12 +2,17 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useParams } from 'next/navigation';
 import CategoryNav from './CategoryNav';
 import PlaceCard from '@/components/ui/PlaceCard';
 import { places, type PlaceCategory } from '@/lib/data/places';
+import { getDictionary } from '@/lib/dictionaries';
 
 export default function FeaturedPlaces() {
   const [activeCategory, setActiveCategory] = useState<PlaceCategory | 'all'>('all');
+  const params = useParams();
+  const lang = (params.lang as string) || 'it';
+  const dict = getDictionary(lang).featured;
 
   const filteredPlaces =
     activeCategory === 'all'
@@ -25,13 +30,13 @@ export default function FeaturedPlaces() {
         className="text-center mb-12"
       >
         <span className="text-sunset-orange font-sans text-xs font-bold tracking-[0.2em] uppercase mb-3 block">
-          Scopri
+          {dict.badge}
         </span>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-ceramic-white mb-4">
-          I posti che amerai
+          {dict.title}
         </h2>
         <p className="text-white/40 font-sans max-w-md mx-auto text-sm sm:text-base">
-          Selezionati per te. Ogni luogo racconta una storia unica di Taormina.
+          {dict.subtitle}
         </p>
       </motion.div>
 
@@ -63,7 +68,7 @@ export default function FeaturedPlaces() {
           className="text-center py-16"
         >
           <p className="text-white/30 font-sans">
-            Nessun posto trovato in questa categoria. Presto ne arriveranno di nuovi! 🌟
+            {dict.empty}
           </p>
         </motion.div>
       )}

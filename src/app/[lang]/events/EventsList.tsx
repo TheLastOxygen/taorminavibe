@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Clock, MapPin, Ticket, ArrowUpRight } from 'lucide-react';
 import type { TaorminaEvent } from '@/lib/data/events';
@@ -13,10 +14,16 @@ const categoryColors: Record<string, string> = {
 };
 
 export default function EventsList({ events }: { events: TaorminaEvent[] }) {
+  const [displayEvents, setDisplayEvents] = useState<TaorminaEvent[]>(events);
+
+  useEffect(() => {
+    setDisplayEvents([...events].sort(() => Math.random() - 0.5));
+  }, [events]);
+
   return (
     <section className="max-w-3xl mx-auto px-4 sm:px-6 pb-16">
       <div className="space-y-4">
-        {events.map((event, index) => (
+        {displayEvents.map((event, index) => (
           <motion.article
             key={event.id}
             initial={{ opacity: 0, y: 15 }}
